@@ -45,15 +45,60 @@ http://localhost:3000
 
 ### GET /
 
-Returns API status.
+Returns the API status and confirms that the server is running.
 
+**Response**
+
+```json
+{
+  "status": "success",
+  "message": "GPA Calculator API is running"
+}
+
+```
 ### POST /subjects
 
-Add a new subject.
+Adds a new subject.
+
+**Request**
+
+```json
+{
+  "name": "Mathematics",
+  "score": 85,
+  "unit": 3
+}
+```
+
+**Status Code:** `201 Created`
+
+**Response**
+
+```json
+{
+  "id": 1,
+  "name": "Mathematics",
+  "score": 85,
+  "unit": 3
+}
+```
 
 ### GET /subjects
 
 Retrieve all subjects.
+
+**Status Code:** `200 OK`
+
+**Response**
+```
+[
+  {
+    "id": 1,
+    "name": "Mathematics",
+    "score": 85,
+    "unit": 3
+  }
+]
 
 ### PUT /subjects/:id
 
