@@ -204,7 +204,7 @@ When No Subjects Exist
 
 ### GET /degree-band
 
-Returns the degree Band based on the average score of all subjects.
+Returns the degree classification based on the average score of all subjects.
 
 **Status Code:** `200 OK`
 
