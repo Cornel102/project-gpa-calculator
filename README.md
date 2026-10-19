@@ -1,6 +1,18 @@
 # GPA Calculator API
 
-A RESTful API built with Node.js, Express.js, and TypeScript for managing student subjects, calculating GPA, and determining degree classifications.
+A RESTful API built with Node.js, Express.js, and TypeScript for managing student subjects, calculating academic performance based on average scores, and determining degree classifications.
+
+## Data Storage
+
+## Data Storage
+
+This project uses in-memory storage to manage subject data.
+
+```typescript
+const subjects: Subject[] = [];
+```
+
+Data is not persisted and will be lost whenever the server restarts.
 
 ## Features
 
@@ -61,7 +73,7 @@ Adds a new subject.
 
 ```json
 {
-  "name": "Mathematics",
+  "subject": "Mathematics",
   "score": 85,
 }
 ```
@@ -73,7 +85,7 @@ Adds a new subject.
 ```json
 {
   "id": 1,
-  "name": "Mathematics",
+  "subject": "Mathematics",
   "score": 85,
 }
 ```
@@ -97,7 +109,7 @@ Retrieve all subjects.
 [
   {
     "id": 1,
-    "name": "Mathematics",
+    "subject": "Mathematics",
     "score": 85,
   }
 ]
@@ -122,7 +134,7 @@ Update a subject score.
 ```json
 {
   "id": 1,
-  "name": "Mathematics",
+  "subject": "Mathematics",
   "score": 90
 }
 ```
@@ -171,7 +183,7 @@ Delete a subject.
 
 ### GET /gpa
 
-Calculates the GPA (average score) of all subjects.
+Calculates the average score (GPA) of all subjects.
 
 **Status Code:** `200 OK`
 
@@ -212,7 +224,7 @@ When No Subjects Exist
 
 ## Degree Classification
 
-| Average Score | Degree Band |
+| Average Score | Degree Classification |
 | --- | --- |
 | 70 - 100 | First Class |
 | 60 - 69 | Second Class Upper |
