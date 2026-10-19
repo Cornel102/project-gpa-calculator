@@ -47,15 +47,12 @@ http://localhost:3000
 
 Returns the API status and confirms that the server is running.
 
+**Status Code:** `200 OK`
+
 **Response**
 
-```json
-{
-  "status": "success",
-  "message": "GPA Calculator API is running"
-}
+GPA Calculator API is running
 
-```
 ### POST /subjects
 
 Adds a new subject.
@@ -66,7 +63,6 @@ Adds a new subject.
 {
   "name": "Mathematics",
   "score": 85,
-  "unit": 3
 }
 ```
 
@@ -79,7 +75,14 @@ Adds a new subject.
   "id": 1,
   "name": "Mathematics",
   "score": 85,
-  "unit": 3
+}
+```
+**Validation Error**
+
+**Status Code:** `400 Bad Request`
+```json
+{
+  "message": "Subject must be a string and score must be between 0 and 100"
 }
 ```
 
@@ -90,35 +93,126 @@ Retrieve all subjects.
 **Status Code:** `200 OK`
 
 **Response**
-```
+```json
 [
   {
     "id": 1,
     "name": "Mathematics",
     "score": 85,
-    "unit": 3
   }
 ]
+```
 
 ### PUT /subjects/:id
 
 Update a subject score.
 
+**Request**
+
+```json
+{
+  "score": 90
+}
+```
+
+**Status Code:** `200 OK`
+
+**Response**
+
+```json
+{
+  "id": 1,
+  "name": "Mathematics",
+  "score": 90
+}
+```
+**Validation Error**
+
+**Status Code:** `400 Bad Request`
+```json
+{
+  "message": "Score must be between 0 and 100"
+}
+```
+**Not Found**
+
+**Status Code:** `404 Not Found`
+```json
+{
+  "message": "Subject not found"
+}
+```
+
 ### DELETE /subjects/:id
 
 Delete a subject.
 
+**Status Code:** `200 OK`
+
+**Response**
+```json
+{
+  "message": "Subject deleted",
+  "deletedSubject": {
+    "id": 1,
+    "subject": "Mathematics",
+    "score": 85
+  }
+}
+```
+**Not Found**
+
+**Status Code:** `404 Not Found`
+```json
+{
+  "message": "Subject not found"
+}
+```
+
 ### GET /gpa
 
-Calculate GPA.
+Calculates the GPA (average score) of all subjects.
+
+**Status Code:** `200 OK`
+
+**Response**
+```json
+{
+  "totalSubjects": 3,
+  "gpa": 78.33
+}
+```
+When No Subjects Exist
+```json
+{
+  "gpa": 0,
+  "message": "No subjects added yet"
+}
+```
 
 ### GET /degree-band
 
-Returns degree classification.
+Returns the degree classification based on the average score of all subjects.
+
+**Status Code:** `200 OK`
+
+**Response**
+```json
+{
+  "average": 78.33,
+  "degreeBand": "First Class"
+}
+```
+When No Subjects Exist
+```json
+{
+  "degreeBand": "No subjects available"
+}
+```
 
 ## Degree Classification
 
-| Average Score | Degree Classification |
+| Average Score | Degree Band |
 | --- | --- |
 | 70 - 100 | First Class |
 | 60 - 69 | Second Class Upper |
