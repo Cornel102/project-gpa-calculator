@@ -4,9 +4,10 @@ A RESTful API built with Node.js, Express.js, and TypeScript for managing studen
 
 ## Data Storage
 
-## Data Storage
+This project uses an Object-Oriented service architecture with an in-memory `Map` inside the `GPACalculator` class to manage subject data.
 
-This project uses in-memory storage to manage subject data.
+```typescript
+private subjects: Map<number, Subject> = new Map();
 
 ```typescript
 const subjects: Subject[] = [];
