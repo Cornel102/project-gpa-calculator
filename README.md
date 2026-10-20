@@ -30,7 +30,24 @@ Data is not persisted and will be lost whenever the server restarts.
 - Express.js
 - TypeScript
 
+## Project Architecture
+
+The project follows a clean, modular Object-Oriented Programming (OOP) structure:
+
+```text
+project-gpa-calculator/
+├── models/
+│   └── Subject.ts       # Subject class with validation and data encapsulation
+├── services/
+│   └── GPACalculator.ts # Business logic for managing subjects and calculations
+├── src/
+│   └── index.ts         # Express server setup and API route handlers
+├── package.json
+└── tsconfig.json
+```
+
 ## Installation
+
 
 Clone the repository and install dependencies:
 
